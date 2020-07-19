@@ -5,6 +5,7 @@ import { createContext } from "react"
 const initialTransactions = [
     {description: "News",amount:500},
     {description: "Book",amount:-300},
+    {description: "Book",amount:-300},
     
 ]
 
