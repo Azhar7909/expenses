@@ -1,14 +1,12 @@
-import React from 'react';
-import Child from './Child';
-// import { transactionProvider } from './globalData';
+import React from 'react'
+import Child from './components/Child'
+import {ContextProvider} from './components/globalData';
 
-
-function App() {
+export default function App() {
+  
   return (
-    <div>
+    <ContextProvider>
       <Child />
-    </div>
-  );
+    </ContextProvider>
+  )
 }
-
-export default App;

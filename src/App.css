@@ -68,3 +68,14 @@ padding:15px;
 .brownColor{
   color: brown;
 }
+
+.greenColor{
+  border-left: 10px solid green;
+  border-right: 10px solid green;
+  color: darkcyan;
+}
+.redColor{
+  border-left: 10px solid red;
+  border-right: 10px solid red;
+  color: darkred;
+}
