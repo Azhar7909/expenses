@@ -68,14 +68,22 @@ padding:15px;
 .brownColor{
   color: brown;
 }
-
 .greenColor{
   border-left: 10px solid green;
   border-right: 10px solid green;
-  color: darkcyan;
 }
 .redColor{
   border-left: 10px solid red;
   border-right: 10px solid red;
-  color: darkred;
+}
+
+.deleteBtn{
+  margin-left: 12px;
+  background-color: #fff;
+  border: none;
+  font-size: 25px;
+  margin-bottom: -4px;
+  margin-top: -7px;
+  color: red;
+  cursor: pointer;
 }

@@ -18,13 +18,21 @@ export function ContextProvider({children}) {
             }
         })
     }
+    // Delete Transaction Action
+    function DeleteTransaction(index) {
+        dispatch({
+            type:'DELETE_TRANSACTION',
+            payload:index
+        })
+    }
 
 
     return(
         <transactionsData.Provider value={
             {
                 data:state,
-                AddTransaction
+                AddTransaction,
+                DeleteTransaction
             }}>
             {children}
         </transactionsData.Provider>

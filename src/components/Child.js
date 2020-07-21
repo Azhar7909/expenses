@@ -9,6 +9,7 @@ function Child() {
     const [amount, setAmount] = useState("")
     const {data} = useContext(transactionsData);
     const {AddTransaction} = useContext(transactionsData)
+    const {DeleteTransaction} = useContext(transactionsData)
     
     
     const handleSubmission = (event) => {
@@ -23,6 +24,11 @@ function Child() {
       setAmount("")
 
     }
+
+    const deleteHandle = (index) => {
+      DeleteTransaction(index)
+    }
+    
 
     function getIncome() {
       let income = 0;
@@ -69,9 +75,12 @@ function Child() {
           {data.length !==0?
               data.map((d,ind)=>{
                   return(
-                    <li className={`spaceBetween bgWhiteBorderRadius ${d.amount > 0 ? 'greenColor' : 'redColor'}`} key={ind+1}>
+                    <li className={`spaceBetween bgWhiteBorderRadius ${d.amount > 0 ? 'greenColor' : 'redColor'}`} key={ind+1}> 
                         <span >{ind+1}) {d.description}</span>
-                        <span >${d.amount}</span>
+                        <span>
+                          <span >${d.amount}</span>
+                          <button onClick={()=>deleteHandle(ind)} className="deleteBtn">x</button>
+                        </span>
                     </li>
                   )
               }): <div className="inputField">No Transactions available</div>
