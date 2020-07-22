@@ -14,7 +14,8 @@ export function ContextProvider({children}) {
             type:'ADD_TRANSACTION',
             payload: {
                 description: newTransaction.desc,
-                amount: newTransaction.amount
+                amount: newTransaction.amount,
+                trans:newTransaction.transactionType
             }
         })
     }

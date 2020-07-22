@@ -10,15 +10,23 @@ function Child() {
     const {data} = useContext(transactionsData);
     const {AddTransaction} = useContext(transactionsData)
     const {DeleteTransaction} = useContext(transactionsData)
-    
+    const [transactionType, setTransactionType ] = useState(true);
+    console.log("transactionType: ",transactionType);
     
     const handleSubmission = (event) => {
       event.preventDefault();
       
-      AddTransaction({
+      if (transactionType) {
+        AddTransaction({
         desc:desc,
         amount:Number(amount)
       })
+      } else {
+        AddTransaction({
+        desc:desc,
+        amount: -Number(amount)
+      })
+      }
      
       setDesc("")
       setAmount("")
@@ -31,25 +39,27 @@ function Child() {
     
 
     function getIncome() {
-      let income = 0;
-        for (var i = 0; i < data.length; i++) {
+        let income = 0;
+        for (var i = 0; i < data.length; i++) 
+        {
           if (data[i].amount > 0) {
             income += data[i].amount
           }
         }
         return income;
-    }
-    function getExpense() {
-      let expense = 0 ;
-      for (var i = 0; i < data.length; i++) {
-        if (data[i].amount < 0) {
-          expense -= data[i].amount
-        }
-        
       }
-      return expense
-      
-    }
+    
+
+    function getExpense() {
+     
+        let expense = 0 ;
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].amount < 0) {
+            expense -= data[i].amount
+          }
+        } 
+        return expense;
+      }      
 
   return (
     <div className="container">
@@ -78,7 +88,7 @@ function Child() {
                     <li className={`spaceBetween bgWhiteBorderRadius ${d.amount > 0 ? 'greenColor' : 'redColor'}`} key={ind+1}> 
                         <span >{ind+1}) {d.description}</span>
                         <span>
-                          <span >${d.amount}</span>
+                          <span >${d.amount > 0 ? d.amount : -d.amount}</span>
                           <button onClick={()=>deleteHandle(ind)} className="deleteBtn">x</button>
                         </span>
                     </li>
@@ -87,8 +97,12 @@ function Child() {
           }
         </ul>
         <h4 className="textColorWight">Add now transaction</h4>
-        <p style={{color:'white', marginTop:'-27px'}}>( <span style={{color:'green',fontSize:'21px'}}> + </span>  value for income and <span style={{color:'darkred',fontSize:'22px'}}> - </span> value for expense ) </p>
         <form onSubmit={handleSubmission}>
+          <p style={{color:'white', marginTop:'-20px'}}>Please select your Transaction Type:</p>
+          <input type="radio" id="incomeType" name="transactionType" onChange={()=>setTransactionType(!transactionType)} value={transactionType} checked={transactionType} />
+          <label htmlFor="income" style={{color:'green'}}>Income</label>
+          <input type="radio" id="expenseType" name="transactionType"  onChange={()=>setTransactionType(!transactionType)} value={!transactionType} checked={!transactionType} />
+          <label htmlFor="expense" style={{color:'darkred'}}>Expense</label><br/>
           <label htmlFor="Text" className="textColorWight">
             Description<br/>
             <input className="inputField" onChange={(e)=>setDesc(e.target.value)} value={desc} type="text" required />

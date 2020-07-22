@@ -87,3 +87,6 @@ padding:15px;
   color: red;
   cursor: pointer;
 }
+.radio{
+  display: flex;
+}
