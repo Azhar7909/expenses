@@ -11,7 +11,6 @@ function Child() {
     const {AddTransaction} = useContext(transactionsData)
     const {DeleteTransaction} = useContext(transactionsData)
     const [transactionType, setTransactionType ] = useState(true);
-    console.log("transactionType: ",transactionType);
     
     const handleSubmission = (event) => {
       event.preventDefault();
