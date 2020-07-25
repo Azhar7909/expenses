@@ -39,16 +39,12 @@ function Child() {
 
     function getIncome() {
         let income = 0;
-       try {
         for (var i = 0; i < data.length; i++) 
         {
           if (data[i].amount > 0) {
             income += data[i].amount
           }
         }
-       } catch (error) {
-         console.log(error.message);
-       }
         return income;
       }
     
@@ -56,15 +52,11 @@ function Child() {
     function getExpense() {
      
         let expense = 0 ;
-        try {
-          for (var i = 0; i < data.length; i++) {
-            if (data[i].amount < 0) {
-              expense -= data[i].amount
-            }
-          } 
-        } catch (error) {
-          console.log(error.message);
-        }
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].amount < 0) {
+            expense -= data[i].amount
+          }
+        } 
         return expense;
       }      
 
