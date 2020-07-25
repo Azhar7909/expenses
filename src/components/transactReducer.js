@@ -5,10 +5,10 @@ const transactionReducer = ((state, action) => {
                 return[action.payload, ...state]
             
         case 'DELETE_TRANSACTION':
-        
-                return state.filter((item, index) => index !== action.payload );
-            
-    
+                var new_state = state.filter((item, index) => index !== action.payload );
+                localStorage.setItem("Transactions",JSON.stringify(new_state)); 
+                return new_state
+               
         default:
             return state
     }
